@@ -1,0 +1,23 @@
+{
+  "name": "react-native-ld-stepslider",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "Error: no test specified"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/latitude-digital/react-native-ld-stepslider.git"
+  },
+  "author": "Latitude Software",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/latitude-digital/react-native-ld-stepslider/issues"
+  },
+  "homepage": "https://github.com/latitude-digital/react-native-ld-stepslider#readme",
+  "peerDependencies": {
+    "react": "^15.4.2",
+    "react-native": "^0.40.0"
+  }
+}
