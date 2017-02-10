@@ -2,7 +2,7 @@
 
 
 ### Preview
-![alt text](http://i.giphy.com/l3q2RujW9PM3bymkg.gif)
+![alt text](http://i.giphy.com/l3q2H4z2oggPjv4By.gif)
 
 ### Installation
 ```bash
