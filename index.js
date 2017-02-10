@@ -54,7 +54,7 @@ export default class StepSlider extends Component {
           underlayColor='white'
           onPress={() => {
             this.setState({value: i})
-            onSlidingComplete(i)
+            onSlidingComplete(options[i])
           }}
         >
           <Text style={styles.optionText(textColor)}>{option}</Text>
