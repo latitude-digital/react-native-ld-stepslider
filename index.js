@@ -10,8 +10,9 @@ import {
 export default class StepSlider extends Component {
 
   static PropTypes = {
-    onSlidingComplete: PropTypes.func.isRequired,
+    onValueChange: PropTypes.func.isRequired,
     options: PropTypes.array.isRequired,
+    value: PropTypes.number,
     label: PropTypes.string,
     minText: PropTypes.string,
     maxText: PropTypes.string,
@@ -28,19 +29,13 @@ export default class StepSlider extends Component {
     sliderWidth: 600,
   }
 
-  constructor(props){
-    super(props)
-    this.state = {
-      value: props.start == 'center' ? (props.options.length-1)/2 : 0
-    }
-  }
-
   renderOptions = () => {
 
     const {
+      value,
       options,
       sliderWidth,
-      onSlidingComplete,
+      onValueChange,
       textColor,
     } = this.props
 
@@ -53,8 +48,7 @@ export default class StepSlider extends Component {
           key={i}
           underlayColor='white'
           onPress={() => {
-            this.setState({value: i})
-            onSlidingComplete(options[i])
+            onValueChange(i)
           }}
         >
           <Text style={styles.optionText(textColor)}>{option}</Text>
@@ -76,15 +70,16 @@ export default class StepSlider extends Component {
       start,
       textColor,
       tailColor,
+      value
     } = this.props
 
     const stepCount = options.length - 1
     const step = 1/(stepCount)
     const sliderWidth = this.props.sliderWidth-((this.props.sliderWidth/2)*step)
-    const fromCenterTailWidth = ((sliderWidth)/(stepCount))*(Math.abs((stepCount)/2 - this.state.value))
-    const fromLeftTailWidth = (sliderWidth)/(stepCount) * this.state.value
+    const fromCenterTailWidth = ((sliderWidth)/(stepCount))*(Math.abs((stepCount)/2 - value))
+    const fromLeftTailWidth = (sliderWidth)/(stepCount) * value
     const tailWidth = start == 'center' ? fromCenterTailWidth : fromLeftTailWidth
-    const tailMarginLeft = start == 'center' ? (this.state.value < (stepCount)/2 ? sliderWidth/2 - fromCenterTailWidth + 5 : sliderWidth/2) : 5
+    const tailMarginLeft = start == 'center' ? (value < (stepCount)/2 ? sliderWidth/2 - fromCenterTailWidth + 5 : sliderWidth/2) : 5
 
     return (
       <View style={styles.view}>
@@ -108,9 +103,7 @@ export default class StepSlider extends Component {
           <View style={styles.trackTail(tailWidth, tailMarginLeft, tailColor)} />
 
           <Slider {...this.props}
-            value={this.state.value}
             step={1}
-            onValueChange={(value) => this.setState({value: value})}
             maximumValue={stepCount}
             minimumTrackTintColor={'transparent'}
             maximumTrackTintColor={'transparent'}
