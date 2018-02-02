@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
+import PropTypes from 'prop-types';
 import {
   View,
   Text,
@@ -9,7 +10,7 @@ import {
 
 export default class StepSlider extends Component {
 
-  static PropTypes = {
+  static propTypes = {
     onValueChange: PropTypes.func.isRequired,
     options: PropTypes.array.isRequired,
     value: PropTypes.number,
