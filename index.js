@@ -95,7 +95,7 @@ export default class StepSlider extends Component {
         : null}
 
         <View style={styles.optionsView( minText && maxText )}>
-          {this.renderOptions(this.props.sliderWidth)}
+          {this.renderOptions()}
         </View>
 
         <View style={{width: sliderWidth}}>
